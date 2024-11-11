@@ -74,7 +74,7 @@ std::vector<torch::Tensor> voronoi_interp_cuda_forward(
     int H,
     int W) {
 
-    auto output_image = torch::zeros({3, H, W}, values.options()).contiguous();
+    auto output_image = torch::zeros({values.size(1), H, W}, values.options()).contiguous();
     auto nearest_idxs = torch::zeros({H, W}, torch::dtype(torch::kLong).device(values.device()).requires_grad(false)).contiguous();
 
     {
